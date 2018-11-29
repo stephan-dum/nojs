@@ -1,0 +1,80 @@
+@import '../focus/_mixin.scss';
+@import '../target/_mixin.scss';
+@import '../checked/_mixin.scss';
+
+
+.accordion_focus,
+.accordion_target,
+.accordion_checked {
+	color:$teal;
+	flex-grow:1;
+	margin:1em;
+	display:flex;
+	flex-direction:column;
+	position:relative;
+
+	.open {
+		padding: 0.25em 0;
+		padding-right:1em;
+		position:relative;
+		background-color:$white;
+
+
+		&:after {
+			content : "";
+			width: 0;
+			height: 0;
+			border-top: 0.5em solid transparent;
+			border-right: 0.5em solid $orange;
+			border-bottom: 0.5em solid transparent;
+			transition: transform $duration;
+			position:absolute;
+			right:0;
+			top:50%;
+			transform:translateY(-50%);
+		}
+	}
+
+	.layer {
+		outline:none;
+		flex-grow:0;
+		transition:flex-grow $duration, border-bottom-width $duration;
+		display:flex;
+		flex-direction:column;
+		background-color:$light-teal;
+		border-bottom:0px solid $teal;
+	}
+
+	.message {
+		height:0;
+		overflow:hidden;
+		border-top:1px solid $teal;
+		flex-grow:0;
+		transition: flex-grow $duration;
+	}
+}
+
+%open_accordion {
+	flex-grow:1;
+	border-bottom-width:1px;
+
+	> .open {
+		:after {
+			transform:translateY(-50%) rotate(-90deg);
+		}
+	}
+	> .message {
+		flex-grow:1;
+	}
+
+}
+
+.accordion_focus {
+	@include accordion_focus(open_accordion);
+}
+.accordion_target {
+	@include accordion_target(open_accordion);
+}
+.accordion_checked {
+	@include accordion_radio(open_accordion);
+}

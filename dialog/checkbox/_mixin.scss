@@ -1,0 +1,13 @@
+@mixin dialog_checkbox($placeholder : "") {
+	> input {
+		display:none;
+		
+		&:checked ~ .layer {
+			@if $placeholder != "" {
+				@extend %#{$placeholder};
+			} @else {
+				@content
+			}
+		}
+	}
+}

@@ -1,0 +1,96 @@
+
+
+.switch {
+	&:before {
+		content:"";
+		position:absolute;
+		height:2px;
+		border-radius:50%;
+		background-color:gray;
+	}
+	
+	.state {
+		width:3px;
+		height:3px;
+		border-radius:50%;
+		position:absolute;
+		left:0;
+		transform:translateX(0);
+		transition:left 0.5s transform 0.5s;
+	}
+	
+	
+	> input:checked + .state {
+		left:100%;
+		transform:translateX(-100%);
+	}
+}
+
+
+#dialog_invalid {
+	label {
+		position:relative;
+		display:inline-block;
+	}
+	
+	input {
+		padding:0.25em;
+		display:block;
+	}
+	
+	.error_message {
+		position:absolute;
+		left:0;
+		width:100%;
+		background-color:$orange;
+		color:$white;
+		font-weight:bold;
+		padding: 0.25em 0.5em;
+		box-sizing:border-box;
+		opacity:0;
+		transition: opacity 0.5s;
+	}
+	
+	.error_icon {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		color: $white;
+		font-weight: bold;
+		background-color: $orange;
+		width: 1em;
+		text-align: center;
+		line-height: 1em;
+		padding: 0.25em;
+		opacity:0;
+		transition: opacity 0.5s;
+		
+		&:before {
+			content: "!";
+		}
+	}
+	
+	input:invalid {
+		~ .error_icon {
+			opacity:1;
+		}
+		
+		&:hover,
+		&:focus {
+			~ .error_message {
+				opacity:1;
+			}
+		}
+	}
+}
+
+#social_media {
+	.flex {
+		justify-content:center;
+		
+		> form {
+			margin:0 0.5em;
+		}
+	}
+}

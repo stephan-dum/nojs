@@ -1,0 +1,9 @@
+@mixin dialog_target($placeholder : "") {
+	> .layer:target {
+		@if $placeholder != "" {
+			@extend %#{$placeholder};
+		} @else {
+			@content
+		}
+	}
+}

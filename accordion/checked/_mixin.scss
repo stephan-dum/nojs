@@ -1,0 +1,13 @@
+@mixin accordion_radio($placeholder : "") {
+	> .controller {
+		display:none;
+	
+		&:checked + .layer {
+			@if $placeholder != "" {
+				@extend %#{$placeholder};
+			} @else {
+				@content
+			}
+		}
+	}
+}

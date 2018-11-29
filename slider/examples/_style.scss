@@ -1,0 +1,124 @@
+@import '../animation/_slider.scss';
+
+#slideshow {
+	display:flex;
+	flex-direction:column;
+}
+
+
+.slider_animation,
+.slider_radio {
+	flex-grow:1;
+	display: flex;
+	position: relative;
+	flex-direction: column;
+
+	$i : 1;
+	$stat_option_amount : 5;
+	$distance : 1/$stat_option_amount;
+	$iteration : 1;
+
+	@while $i > 0 {
+
+		$color : rgba($teal, $i);
+
+		.legend_option_#{$iteration} {
+			&:before {
+				content:"";
+				background-color:$color;
+				height:1em;
+				width:1em;
+				display:inline-block;
+				margin-right: 0.5em;
+			}
+
+
+
+		}
+
+		$iteration : $iteration + 1;
+		$i : $i - $distance;
+
+	}
+
+
+	.legend {
+
+	}
+}
+
+
+
+
+.slider_animation {
+	@include animation_slider(1, 3);
+	@include animation_layer(background, 3, 3, 0.5, 10);
+
+
+	h3, h3 + p {
+		padding:0 0.5em;
+	}
+
+	&:hover {
+		> .progress,
+		> .background,
+		> .slides {
+			animation-play-state:paused;
+		}
+
+		.tooltip {
+			transform: translateX(0%);
+		}
+	}
+
+	.tooltip {
+		padding:0.5em;
+		background-color:$light_teal;
+		color:$teal;
+		position: absolute;
+		bottom:1em;
+		left:0em;
+		transform:translateX(-100%);
+		transition: transform 0.5s;
+	}
+
+	> .progress {
+		animation: slider_progress 3.5s linear infinite;
+		background-color:$teal;
+		position: absolute;
+		bottom:0;
+		left:0;
+		width:0%;
+		height:0.25em;
+	}
+
+	> .background {
+	}
+
+	> .slides {
+		flex-grow: 1;
+		display: flex;
+	}
+
+	.scene {
+		padding: 1em;
+		box-sizing: border-box;
+		display:block;
+		position: relative;
+	}
+}
+
+
+@keyframes slider_progress {
+	0% {
+		width:0%;
+	}
+	90% {
+		width:100%;
+		opacity: 1;
+	}
+	100% {
+		width:100%;
+		opacity: 0;
+	}
+}

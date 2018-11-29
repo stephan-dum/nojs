@@ -1,0 +1,24 @@
+ <form class="accordion_checked">
+	
+	<input class="controller" id="radio_accessability" type="radio" name="accordion_radio">
+	<div class="layer">
+		<label for="radio_accessability" class="open">Accessability</label>
+		<p class="message">All core functinallity must be accessable for any user agent.</p>
+		<!--This is espacially valueable for crawlers or screen readers, that have hard times dealing with javascript and its asynchronious nature.-->
+	</div>
+
+	<input class="controller" id="radio_content_first" type="radio" name="accordion_radio">
+	<div class="layer">
+		<label for="radio_content_first" class="open">Content First</label>
+		<p class="message">All content and nessesary semantics must be accessable to any user agent.</p>
+		<!--Endless scrolling for example must provide a pagination in the first place to make deeper sites reachable without javascript.-->
+	</div>
+
+	<input class="controller" id="radio_seperation" type="radio" name="accordion_radio">
+	<div class="layer">
+		<label for="radio_seperation" class="open">Seperation of Concerns</label>
+		<p class="message">Code must be maintained separately, without impacting other files.</p>
+		<!--Uniform way for styling -->
+		<!--This will make integration much easier when it comes to larger project with many people being involved.-->
+	</div>
+</form>

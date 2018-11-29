@@ -1,0 +1,26 @@
+@mixin select_edge($activ_background : "") {
+	> .opener {
+		&:focus {
+			z-index:0;
+		}
+		
+		&:focus + .list input:checked + .label {
+			background-color:$activ_background;
+			cursor:initial;
+		}
+		
+		&:not(:focus) + .list:not(:active) input:not(:checked) + .label {
+			display:none;
+		}
+	}
+	
+	> .list {
+		input {
+			display:none;
+		}
+		
+		&:active {
+			z-index:1;
+		}
+	}
+}

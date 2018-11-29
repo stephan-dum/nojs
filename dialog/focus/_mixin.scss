@@ -1,0 +1,10 @@
+
+@mixin dialog_focus($placeholder : "") {	
+	> input:focus + .layer {
+		@if $placeholder != "" {
+			@extend %#{$placeholder};
+		} @else {
+			@content
+		}
+	}
+}

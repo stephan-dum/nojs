@@ -1,0 +1,22 @@
+.toggleNav {
+	display:none;
+}
+
+.navi {
+	> ul {
+		display:flex;
+		flex-grow:1;
+		align-items:stretch;
+		justify-content:flex-end;
+	}
+	
+	a {
+		height: 100%;
+		padding: 0.5em;
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+	}
+	
+	
+}

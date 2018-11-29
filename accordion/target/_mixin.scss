@@ -1,0 +1,14 @@
+@mixin accordion_target($placeholder : "") {
+	> .controller {
+		position:fixed;
+		top:0;
+		
+		&:target + .layer {
+			@if $placeholder != "" {
+				@extend %#{$placeholder};
+			} @else {
+				@content
+			}
+		}
+	}
+}

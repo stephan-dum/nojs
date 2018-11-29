@@ -1,0 +1,17 @@
+@import '_layer.scss';
+
+@mixin animation_slider($amount, $displayDuration : 5, $transitionDuration : 0.5) {
+	position: relative;
+	overflow: hidden;
+	
+	@include animation_layer(slides, $amount, $displayDuration, $transitionDuration, 100);
+
+	.scene {
+		width:100%;
+		height: 100%;
+		display: block; 
+		position: relative;
+		overflow: hidden;
+	}
+}
+

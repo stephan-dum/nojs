@@ -1,0 +1,43 @@
+<article>
+	<h2>Form Control</h2>
+	<section>
+		<h3>Switch</h3>
+		<p>
+			Uses :before and :after for presentation and :checked with a
+			<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/General_sibling_selectors">
+				general
+			</a>
+			or
+			<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_selectors">
+				adjacent
+			</a>
+			sibling combinator to control the state.
+		</p>
+		<label class="switch">
+			<input type="checkbox"/>
+			<span class="state"/>
+		</label>
+	</section>
+	<section id="dialog_invalid">
+		<h3>:invalid</h3>
+		<p>
+			Uses html
+			<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation">
+				constraint validation
+			</a>
+			and their
+			<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation#Visual_styling_of_constraint_validation">
+				pseudo classes
+			</a> for form controls.
+		<p>
+		<form id="error_message">
+			<label>
+				<input type="text" value="word" pattern="\w+" required/>
+				<span class="error_icon"></span>
+				<div class="error_message">
+					Only alphanumeric allowed!
+				</div>
+			</label>
+		</form>
+	</section>
+</article>

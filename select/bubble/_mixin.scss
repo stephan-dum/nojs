@@ -1,0 +1,35 @@
+@mixin select_bubble {
+	> .opener:focus {
+		z-index:-1;
+	}
+	
+	.label {
+		display:none;
+	}
+	
+	input {
+		display:none;
+	}
+	
+	> list .label {
+		display:none;
+	}
+	
+	> .list:active,
+	> input:active ~ .list {
+		z-index:1;
+	}
+	
+	> .opener:focus,
+	> input:active {
+		~ .list .label {
+			display:block;
+		}
+	}
+	
+	@for $i from 1 through 10 {
+		> :nth-child(#{$i}):checked ~ .list > :nth-child(#{$i}) > .label {
+			display:block;
+		}
+	}
+}

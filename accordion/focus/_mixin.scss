@@ -1,0 +1,9 @@
+@mixin accordion_focus($placeholder : "") {
+	.layer:focus {
+		@if $placeholder != "" {
+			@extend %#{$placeholder};
+		} @else {
+			@content
+		}
+	}
+}

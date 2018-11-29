@@ -1,0 +1,103 @@
+@import '../legacy/_mixin.scss';
+@import '../bubble/_mixin.scss';
+@import '../edge/_mixin.scss';
+
+.select_bubble,
+.select_edge {
+	display:inline-block;
+	position:relative;
+	min-height:2em;
+	min-width:150px;
+
+	> .list {
+		list-style:none;
+		margin:0;
+		padding:0;
+		position:absolute;
+		outline:none;
+		width:100%;
+		box-sizing:border-box;
+		line-height:1em;
+		border:1px solid gray;
+		top:0;
+		background-color:$white;
+		z-index:1;
+
+		.label {
+			padding:0.5em;
+			cursor:pointer;
+			-webkit-tap-highlight-color: transparent;
+		}
+
+		&:before,
+		&:after {
+			content: "";
+			position: absolute;
+			right: 0.75em;
+			top: 0.75em;
+			transition: all 0.5s;
+			border: 0.25em solid transparent;
+			cursor: pointer;
+			z-index: 1;
+			pointer-events: none;
+			border-bottom-color: black;
+		}
+
+		&:before {
+			transform: rotate(45deg);
+		}
+
+		&:after {
+			transform:rotate(-45deg);
+		}
+	}
+
+	> .opener {
+		position:absolute;
+		top:0;
+		width:100%;
+		height:100%;
+		background:transparent;
+		opacity:0;
+		border:0;
+		padding:0;
+		cursor:pointer;
+		display:block;
+		z-index:2;
+		-webkit-tap-highlight-color: transparent;
+
+		&:focus {
+			z-index:-1;
+
+			 ~ .list {
+				&:before,
+				&:after {
+					border-right-width: 0em;
+					border-left: 0.15em solid black;
+					border-bottom-width: 0.825em;
+					top: 0.75em;
+					right: 1em;
+					pointer-events: initial;
+					border-top-width: 0em;
+				}
+
+				.label:hover {
+					background-color:$lighter_teal;
+				}
+			}
+		}
+	}
+}
+
+
+.select_legacy {
+	@include select_legacy;
+}
+
+.select_bubble {
+	@include select_bubble;
+}
+
+.select_edge {
+	@include select_edge($light_teal);
+}

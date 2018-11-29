@@ -1,0 +1,81 @@
+@import "/lib/dialog/focus/_mixin.scss";
+@import "/lib/dialog/target/_mixin.scss";
+@import "/lib/dialog/checkbox/_mixin.scss";
+
+.dialog_focus,
+.dialog_target,
+.dialog_checkbox {
+	> .layer {
+		position:fixed;
+		left:0;
+		top:0;
+		z-index:1;
+		width:100%;
+		height:0%;
+		overflow:hidden;
+		background-color: rgba($gray, 0);
+		transition:background-color 0.5s;
+		
+		> .close {
+			position:absolute;
+			width:100%;
+			height:100%;
+			cursor:pointer;
+		}
+	}
+	
+	.message {
+		position:absolute;
+		overflow:hidden;
+		z-index:1;
+		opacity:0;
+		max-height:80vh;
+		max-width:80vw;
+		top:50%;
+		left:50%;
+		transform:translate(-50%, -50%);
+		width:400px;
+		height:300px;
+		background-color:$light_teal;
+		padding:1em;
+		transition:opacity 0.5s;
+		
+		> .close {
+			position:absolute;
+			top:1em;
+			right:1em;
+			cursor:pointer;
+		}
+	}
+	
+	> .open {
+		border:1px solid $teal;
+		display:inline-block;
+		color:$teal;
+		margin:0;
+		padding:0.25em 0.5em;
+		background-color:$white;
+		cursor:pointer;
+	}
+}
+
+%dialog_show {
+	height:100%;
+	background-color:rgba($gray, 0.3);
+	
+	> .message {
+		opacity:1;
+	}
+}
+
+.dialog_focus {
+	@include dialog_focus(dialog_show);
+}
+
+.dialog_target {
+	@include dialog_target(dialog_show);
+}
+
+.dialog_checkbox {
+	@include dialog_checkbox(dialog_show);
+}
